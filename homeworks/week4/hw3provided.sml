@@ -115,6 +115,7 @@ fun check_pat p =
       case p of
            Variable x => acc @ [x]
          | TupleP ps  => List.foldl extract_var acc ps
+         | ConstructorP(_, p') => extract_var(p', acc)
          | _          => acc
     fun is_repeat sl = 
       case sl of
